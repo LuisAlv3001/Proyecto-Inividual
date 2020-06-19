@@ -1,0 +1,356 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+$decoration-color: #35d0ba;
+$background-color1: #d92027;
+$background-color2: #ff9234;
+$background-color3: #ffcd3c;
+
+$font1: 'Oswald', sans-serif;
+$font2: 'Poppins', sans-serif;
+
+body {
+  margin: 0;
+  padding: 5vh 5vw 0 5vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+  background-image: linear-gradient(-225deg, $background-color1 0%, $background-color2 50%, $background-color3 100%);
+  font-family: $font2;
+}
+
+
+.list-group{
+  overflow: hidden;
+}
+
+.list-group-item{
+  border: 0 !important; 
+  padding: 1rem 0 !important;
+}
+
+.select{
+  color: black;
+  font-family: $font1;
+  transition-duration: 150ms;
+  p{
+    margin-bottom: 0;
+  }
+}
+
+.list-group-item.active{
+  color: $decoration-color;
+  background-color: white;
+  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.38);
+}
+
+.select:hover{
+  text-decoration: none;  
+  color: $decoration-color;
+  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.38);
+  z-index: 1;
+}
+
+.card-job{
+  color: $decoration-color;
+}
+
+.col-1{
+  height: 0;
+  padding-left: 0;
+}
+
+.card-guy{
+  box-shadow: 17px 0px 22px -13px rgba(0,0,0,0.38);
+  z-index: 1;
+}
+
+.list-inline-item{
+  a{
+    color: black;
+  }
+}
+.list-inline-item:hover{
+  a{
+    color: $decoration-color;
+  }
+}
+
+.about-me{
+  font-size: 1.5rem;
+  span{
+    color: $decoration-color;
+  }
+}
+
+.skills{
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.circular-progress {
+  &,
+  &:before,
+  &:after {
+    width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  }
+  margin: auto;
+  position: relative;
+  &:before,
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+  }
+  &:before {
+    padding: .5em;
+    box-sizing: border-box;
+    font-size: 2rem;
+    line-height: 8rem;
+  }
+  &:after {
+    line-height: 13rem;
+  }
+}
+
+@function progress($percent){
+  $deg: $percent/100 * 180;
+  @return #{$deg}deg;
+}
+
+@mixin circular-progress($percent,$skill,$color,$bgcolor){
+  $progress: progress($percent);
+  transform: rotate($progress);
+  background: linear-gradient(
+    0deg,
+    $color 50%,
+    rgba($color, .2) 50%
+  );
+  &:before,
+  &:after {
+    color: $color;
+  }
+  &:before {
+    content: "#{$skill}";
+    background: $bgcolor content-box;
+    transform: rotate(-#{$progress});
+  }
+  &:after{
+    content: "#{$percent}%";
+    background: linear-gradient(
+      transparent 50%,
+      $bgcolor 50%
+    );
+    transform: scale(1.1) rotate(-#{$progress});
+  }
+}
+
+.html {
+  @include circular-progress(
+    80,
+    HTML,
+    #F16524,
+    white)
+}
+.css {
+  @include circular-progress(
+    70,
+    CSS,
+    #00ACE4,
+    white)
+}
+.js {
+  @include circular-progress(
+    65,
+    Js,
+    #F7E018,
+    white)
+}
+.photoshop {
+  @include circular-progress(
+    60,
+    Ps,
+    #00C9FF,
+    white)
+}
+.illustrator {
+  @include circular-progress(
+    70,
+    Ai,
+    #FF9A00,
+    white)
+}
+.php {
+  @include circular-progress(
+    40,
+    PHP,
+    #787CB4,
+    white)
+}
+
+.work-experience{
+  border: 1px solid rgba(#111, .2);    
+  border-radius: .5rem;
+  box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.18);
+}
+
+.skills-cards{
+  border: 1px solid rgba(#111, .2);    
+  border-radius: .5rem;
+  box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.18);
+  width: 15vw;
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.icon{
+  padding-top: 1rem;
+  width: 4rem;
+  height: 4rem;
+  color: white;
+  font-size: 2rem;
+  margin-bottom: .5rem;
+  border-radius: 50%;
+  background-color: $decoration-color;
+}
+
+
+.progressbar{
+  padding: 0;
+  li{
+    list-style-type: none;
+    float: left;
+    width: 33.3333%;
+    position: relative;
+    text-align: center;
+    letter-spacing: 2px;
+    &:before {
+      content: "2013";
+      width: 60px;
+      height: 60px;
+      line-height: 55px;
+      border: 3px solid $decoration-color;
+      display: block;
+      text-align: center;
+      margin: 0 auto 10px auto;
+      border-radius: 50%;
+      background-color: white;
+      letter-spacing: 0px;
+    }
+    &:last-child:before{
+      content: "Today";
+    }
+    &:nth-child(2):before{
+      content: "2017";
+    }
+    &:after {
+      content:"Patriarca S. Jose Highschool";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: $decoration-color;
+      top: 25px;
+      left: -50%;
+      z-index: -1;
+    }
+    &:first-child:after{
+      content: none;
+    }
+    &:last-child:after{
+      content: "Costa Rica University";
+    }
+  }
+}
+
+.full-card{
+  z-index: -2;
+}
+
+.works{
+  overflow: auto;
+  height: 85vh;
+}
+
+.card-img{
+  padding: .5rem;
+  border: 1px solid rgba(#111, .2);    
+  border-radius: .5rem;
+  box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.18);
+  width: 100%;
+  
+}
+
+.content{
+  flex: 0 0 50%;
+  padding: 15px;
+}
+
+.content-item{
+  position: relative;
+  cursor: pointer;
+}
+
+.img-desc{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8) ;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  padding: 30px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  h1, p{
+    transform: translateY(-50px);
+    transition: all 0.3s ease;
+  }
+}
+
+.img-desc{
+  h1, p{
+    color: white;
+  }
+}
+
+.content-item:hover{
+  .img-desc{
+    h1, p{
+      transform: translateY(0px);
+    }
+    opacity: 1;
+  }
+}
+
+.card-contact{
+  padding: .5rem;
+  border: 1px solid rgba(#111, .2);
+  border-radius: .5rem;
+  box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.18);
+  font-family: $font1;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: .5s;
+  a{
+    color: black;
+    text-decoration: none;
+  };
+}
+
+.card-contact:hover{
+  .contact-icon{
+    background-color: $background-color2;
+  }
+  
+  box-shadow: 5px 5px 14px 0px rgba(0,0,0,0.50);
+}
+
+.contact-icon{
+  background-color: $decoration-color;
+  color: white;
+  border-radius: .5rem;
+  padding: .5rem;
+  transition: .5s;
+}
